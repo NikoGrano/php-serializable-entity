@@ -201,18 +201,15 @@ final class EntityToArrayTest extends TestCase
         $expected = [
             'name'    => self::NAME,
             'id'      => self::CODE,
-            'flag' => [
-                'options'    =>
-                    [
-                        'released' =>
-                            [
+            'flag'    => [
+                'options'    => [
+                        'released' => [
                                 'timestamp' => 946684800,
-                                'timezone' =>
-                                [
+                                'timezone'  => [
                                     'timezone' => 'UTC',
-                                    'offset' => 0
-                                ]
-                            ]
+                                    'offset'   => 0,
+                                ],
+                            ],
                     ],
                 'mainColor'  => self::MAIN,
                 'height'     => self::SIZE[0],
