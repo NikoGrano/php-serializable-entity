@@ -16,6 +16,8 @@ namespace Niko9911\Serializable;
 
 trait SerializableTrait
 {
+    protected $toArrayRecursion = 4;
+
     /**
      * @return array
      *
@@ -23,7 +25,7 @@ trait SerializableTrait
      */
     public function toArray(): array
     {
-        return EntityToArray::convert($this);
+        return EntityToArray::convert($this, $this->toArrayRecursion);
     }
 
     /**
