@@ -46,7 +46,7 @@ class EntityToArray
      */
     public static function convert(
         object $entity,
-        int $recursionDepth = 2,
+        int $recursionDepth = 4,
         bool $throwExceptionOnRecursionLimit = true,
         bool $replaceValuesOnRecursionLimit = true
     ): array {
