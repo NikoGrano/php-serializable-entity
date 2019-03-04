@@ -8,7 +8,7 @@ Apply JsonSerializable into entity by extending a class.
 Via [composer](http://getcomposer.org):
 
 ```shell
-composer require niko9911/niko9911/serializable-entity
+composer require niko9911/serializable-entity
 ```
 
 ## Usage
