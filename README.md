@@ -3,6 +3,9 @@
 Convert entity into array or json. 
 Apply JsonSerializable into entity by extending a class.
 
+See my blog post about this 
+[here](https://xn--gran-8qa.fi/serializing-php-entities-to-json/)!
+
 ## Install
 
 Via [composer](http://getcomposer.org):
