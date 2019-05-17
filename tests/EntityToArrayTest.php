@@ -203,7 +203,7 @@ final class EntityToArrayTest extends TestCase
             'id'      => self::CODE,
             'flag'    => [
                 'options'    => [
-                        'released' => '2000-01-01T00:00:00+00:00'
+                        'released' => '2000-01-01T00:00:00+00:00',
                     ],
                 'mainColor'  => self::MAIN,
                 'height'     => self::SIZE[0],
