@@ -203,13 +203,7 @@ final class EntityToArrayTest extends TestCase
             'id'      => self::CODE,
             'flag'    => [
                 'options'    => [
-                        'released' => [
-                                'timestamp' => 946684800,
-                                'timezone'  => [
-                                    'timezone' => 'UTC',
-                                    'offset'   => 0,
-                                ],
-                            ],
+                        'released' => '2000-01-01T00:00:00+00:00'
                     ],
                 'mainColor'  => self::MAIN,
                 'height'     => self::SIZE[0],
@@ -228,6 +222,6 @@ final class EntityToArrayTest extends TestCase
             ]
         ));
 
-        $this->assertEquals(EntityToArray::convert($entity, 10), $expected);
+        $this->assertEquals($expected, EntityToArray::convert($entity, 10));
     }
 }

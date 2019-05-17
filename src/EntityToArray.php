@@ -52,11 +52,11 @@ class EntityToArray
     ): array {
         try {
             return (
-                new self(
-                    $recursionDepth,
-                    $throwExceptionOnRecursionLimit,
-                    $replaceValuesOnRecursionLimit
-                )
+            new self(
+                $recursionDepth,
+                $throwExceptionOnRecursionLimit,
+                $replaceValuesOnRecursionLimit
+            )
             )->run($entity);
         } catch (\ReflectionException $e) {
             // @codeCoverageIgnoreStart
@@ -140,11 +140,15 @@ class EntityToArray
     protected function handleRecursive($value)
     {
         if (\is_array($value)) {
-            return $this->handleRecursiveArray($value);
+            $var = $this->handleRecursiveArray($value);
+
+            return 1 === \count($var) && isset($var[0]) ? $var[0] : $var;
         }
 
         if (\is_object($value)) {
-            return $this->handleRecursiveObject($value);
+            $var = $this->handleRecursiveObject($value);
+
+            return 1 === \count($var) && isset($var[0]) ? $var[0] : $var;
         }
 
         return $value;
@@ -189,26 +193,25 @@ class EntityToArray
      *
      * @return mixed
      *
-     * @throws ConversionException
-     * @throws \ReflectionException
+     * @throws \Exception
      */
-    protected function handleSpecial(object $ent): array
+    protected function handleSpecial(object $ent)
     {
         switch (\get_class($ent)) {
             case \DateTimeImmutable::class:
                 /* @var \DateTimeImmutable $ent */
-                return ['timestamp' => $ent->getTimestamp(), 'timezone' => $this->run($ent->getTimezone())];
-            break;
+                return [$ent->format(DATE_ATOM)];
+                break;
             case \DateTimeZone::class:
                 /* @var \DateTimeZone $ent */
                 /* @noinspection PhpUnhandledExceptionInspection */
                 return ['timezone' => $ent->getName(), 'offset' => $ent->getOffset(new \DateTime('now', new \DateTimeZone('UTC')))];
-            break;
+                break;
             default:
                 // @codeCoverageIgnoreStart
                 // Should not be reached, but good practice to have default.
                 return [];
-                // @codeCoverageIgnoreSEnd
+            // @codeCoverageIgnoreSEnd
         }
     }
 
